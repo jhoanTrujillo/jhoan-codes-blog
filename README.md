@@ -1,39 +1,82 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Jhoan Codes - The Blog
 
-Welcome,
+A blog where I share insights, my personal experience, and tips about web development. The blog is a safe space for others to share comments, see post, interact with a community throught our post. 
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+> Blog built using Django, Javascript, CSS, and HTML. 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+Deployed in **Heroku**: [Link here](#jhoan-codes---the-blog) 
 
-## Codeanywhere Reminders
+## Table of Content
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+1. **UX/UI Design**
+	- [UX](#ux)
+	- [UI](#ux)
+1. [Database Design](#database-design)
+1. **Technologies & Deployment**
+	- [Technologies Used](#technologies-used)
+	- [Deployment](#deployment)
+1. [Testing](#testing)
+1. [Resources](#resources--credits)
 
-`python3 -m http.server`
+## UX/UI Design
+In this section, we cover the initial project design ideas, the user experience/design, UI choices, wireframing, and the user stories.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### UX
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+#### Initial Ideal
+The decision to create a blog stemmed from my desire to establish a space where I can share my knowledge, experiences, and journey in the world of web development with others. Additionally, since the Django framework is designed specifically for blog/news creation, I felt it would be fitting to test its capabilities by focusing on its specialized use case.
 
-`http_server`
+#### User Stories 
+All user stories can be find in the [Project board]()
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+#### Feature List
+There were many features I wanted to implement in the blog. However, due to time constraints, I decided to prioritize the main features essential for a functioning blog. To allow room for future features and to adhere to a proper agile process, I included all desired features in the list, although not all were ultimately implemented.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### UI
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### Wireframe & Framework
 
-To log into the Heroku toolbelt CLI:
+#### Fonts
+**Roboto/Bold**: The font is simple, clear, and easy to read. Additionally, the roundest of the font make it somehow approachable or friendly. This should create a welcoming/inviting experience.
+**DM Sans/Regular**: I decided to this font in combination with Roboto to create a good contrast. DM Sans is also a highly readable font, but the difference in weight should provide a good contrast to ensure a proper visual hierarchy.
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+#### Color Scheme
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
+[**BACK TO TOP**](#jhoan-codes---the-blog)
 ---
 
-Happy coding!
+## Database Design
+
+
+[**BACK TO TOP**](#jhoan-codes---the-blog)
+---
+
+## Technologies & Deployment
+
+#### Technologies used 
+The technologies used to built this blog were"
+
+- **Python/Django**: The main technology used to implement the MVC, create the database, and render the views for the project.   
+- **HTML**: To handle markup.
+- **CSS/Materialize CSS**: CSS. but Mostly via the framework materialized CSS. The framework helps materialize the development speed, by providing useful pre-built element styling. 
+- **JavaScript**: Vanilla JavaScript. No frameworks were used for this project. 
+- **PostgreSQL**: For database management.
+
+**Workspace**
+- **VS code**: This is my default text editor to work on programming projects. 
+
+--- 
+### Deployment
+
+[**BACK TO TOP**](#jhoan-codes---the-blog)
+---
+## Testing
+
+
+[**BACK TO TOP**](#jhoan-codes---the-blog)
+---
+## Resources & Credits
+
+
+[**BACK TO TOP**](#jhoan-codes---the-blog)
