@@ -63,8 +63,9 @@ The technologies used to built this blog were"
 - **JavaScript**: Vanilla JavaScript. No frameworks were used for this project. 
 - **PostgreSQL**: For database management.
 
-**Workspace**
+**Workspace & Tools**
 - **VS code**: This is my default text editor to work on programming projects. 
+- **ElephantSQL**: A PostgreSQL database hosting service. Their free plan makes it convenient for small portfolio projects such as this. 
 
 --- 
 ### Deployment
