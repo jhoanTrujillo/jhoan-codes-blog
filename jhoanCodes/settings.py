@@ -73,6 +73,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jhoanCodes.wsgi.application'
 
+# Add local and heroku enviroment to trusted sources
+# Allows blog post data to show in admin
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:*",
+    "https://*.herokuapp.com"
+]
 
 # Calls database url from env.py to keep it secret.
 # uses the dj_database_url module to access a database
