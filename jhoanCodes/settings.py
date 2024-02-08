@@ -13,15 +13,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+# Looks for the env.py file
+# If the file exist, imports the file.
 if os.path.isfile('env.py'):
 	import env
 	
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -41,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	# Added after creation
 	'blog',
 ]
 
@@ -75,8 +74,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'jhoanCodes.wsgi.application'
 
 
-# Calls database from env.py to keep database url secret.
-# This prevent the access from third-parties. 
+# Calls database url from env.py to keep it secret.
+# uses the dj_database_url module to access a database
+# From its URL
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
