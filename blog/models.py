@@ -22,6 +22,15 @@ class Post(models.Model):
 	created_on = models.DateTimeField(auto_now_add=True)
 	updated_on = models.DateTimeField(auto_now=True)
 	status = models.IntegerField(choices=STATUS, default=0)
+	
+	# Changes the name format in the admin
+	def __str__(self):
+		return f"{self.title} | Author: {self.author}"
+	
+	# Orders the post by date of creation
+	class meta:
+		ordering = ["-created_on"]
+
 
 class Comment(models.Model):
 	post = models.ForeignKey(
@@ -33,3 +42,10 @@ class Comment(models.Model):
 	body = models.TextField()
 	approval = models.BooleanField(default=False)
 	created_on = models.DateTimeField(auto_now_add=True)
+
+   	# Changes the name format in the admin
+	def __str__(self):
+		return f"{self.body} | Commenter: {self.author}"
+	
+	class meta:
+		ordering = ["created_on"]
