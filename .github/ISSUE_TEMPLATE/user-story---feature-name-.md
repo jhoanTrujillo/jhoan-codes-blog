@@ -3,7 +3,7 @@ name: 'User Story: <feature name>'
 about: Template created to add user stories to track features needed to complete our
   project
 title: 'User Story: <feature name>'
-labels: User Story
+labels: Epic, Must-Have, User Story
 assignees: jhoanTrujillo
 
 ---
