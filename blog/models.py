@@ -16,7 +16,7 @@ class Post(models.Model):
 	# max_length set to 320 to limit the number of lines
 	# that can be display, allowing for 80 chars per line
 	# blank allows for empty value submittion
-	excerpt = models.TextField(max_length=320, blank=True)
+	excerpt = models.TextField(max_length=500, blank=True)
 	content = models.TextField()
 	# auto_now_add will add the creation date of the post to the database
 	created_on = models.DateTimeField(auto_now_add=True)
