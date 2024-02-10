@@ -1,0 +1,37 @@
+:root {
+    --bg-color: #171010;
+    --bg-color2: #2B2B2B;
+    --accent: #f96d00;
+    --fg-color: #f2f2f2;
+}
+
+.bg-color {
+    background: var(--bg-color);
+}
+
+.bg-color2 {
+    background: var(--bg-color2);
+}
+
+.accent {
+    background: var(--accent);
+}
+
+.fg-color {
+    background: var(--fg-color);
+}
+
+/* Sticky footer - from materialize css */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  * {
+	color: var(--fg-color);
+  }
