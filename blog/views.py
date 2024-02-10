@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Post
+# Imports generic class from django
+from django.views import generic
 
 
-# Create your views here.
-def index(request):
-	return HttpResponse("Hello, world. You're at the blog index.")
-
+# Class based view 
+class PostList(generic.ListView):
+	# Import model to access data via generic view
+	# Filtering results by published post only
+	queryset = Post.objects.filter(status=0).order_by("created_on")
+	template_name = 'post_list.html'

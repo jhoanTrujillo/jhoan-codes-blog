@@ -27,7 +27,7 @@ In this section, we cover the initial project design ideas, the user experience/
 The decision to create a blog stemmed from my desire to establish a space where I can share my knowledge, experiences, and journey in the world of web development with others. Additionally, since the Django framework is designed specifically for blog/news creation, I felt it would be fitting to test its capabilities by focusing on its specialized use case.
 
 #### User Stories 
-All user stories can be find in the [Project board](https://github.com/users/jhoanTrujillo/projects/4)
+All user stories & epics can be find in the [Project board](https://github.com/users/jhoanTrujillo/projects/4)
 
 #### Feature List
 There were many features I wanted to implement in the blog. However, due to time constraints, I decided to prioritize the main features essential for a functioning blog. To allow room for future features and to adhere to a proper agile process, I included all desired features in the list, although not all were ultimately implemented.
