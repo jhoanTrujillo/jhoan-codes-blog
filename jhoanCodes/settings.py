@@ -26,7 +26,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com',]
 
@@ -41,19 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	# Django allauth apps
-	'django.contrib.sites',
-    'allauth',
+	'allauth',
     'allauth.account',
     'allauth.socialaccount',
+	'allauth.socialaccount.providers.google',
+	'django.contrib.sites',
 	# Summernote app
 	'django_summernote',
 	'blog',
 ]
-
-# 
-SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,8 +62,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	# Allauth django app middleware
-	'allauth.account.middleware.AccountMiddleware',
+	"allauth.account.middleware.AccountMiddleware",
 ]
+
+# Adding google as a registration provider
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+		"SCOPE": [
+			"profile",
+			"email"
+        ],
+		"AUTH_PARAMS" : {"access_type" : "online"},
+    }
+}
 
 ROOT_URLCONF = 'jhoanCodes.urls'
 
@@ -82,6 +89,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+				# Needed for allauth functionalities
+				'django.template.context_processors.request',
             ],
         },
     },
@@ -148,3 +157,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Authentication backend for allauth for latest version
+AUTHENTICATION_BACKENDS = (
+	"django.contrib/auth.backends.ModelBackend",
+	"allauth.accounts.auth_backends.AuthenticationBackend"
+)
+
+SITE_ID = 1
+# Redirects for allauth login and logout actions
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

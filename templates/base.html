@@ -1,5 +1,8 @@
 {% load static %}
 {% url 'home' as home_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -56,10 +59,10 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary">
+                            <a href="{% url 'account_signup' %}" class="button is-primary">
                                 <strong>Sign up</strong>
                             </a>
-                            <a class="button is-light"> Log in </a>
+                            <a href="{% url 'account_login' %}" class="button is-light"> Log in </a>
                         </div>
                     </div>
                 </div>
