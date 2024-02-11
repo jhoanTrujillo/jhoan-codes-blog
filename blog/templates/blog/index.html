@@ -3,12 +3,18 @@
 	<section class="section is-medium">
 		<div class="grid-container">
 			{% for post in post_list %}
-				<div class="card column">
-					<div class="card-content">
+				<div class="card">
+					<div class="card-content">	
 						<p class="title">{{ post.title }}</p>
 						<div class="content">{{ post.excerpt }}</div>
 						<span class="subtitle">Author: {{ post.author }}</span>
 					</div>
+					<div class="card">
+						<footer class="card-footer">
+						  <a href="{% url 'post_view' post.slug %}" class="card-footer-item">Open Post</a>
+						  <span class="card-footer-item subtitle">{{ post.created_on }}</span>
+						</footer>
+					  </div>
 				</div>
 			{% endfor %}
 		</div>
