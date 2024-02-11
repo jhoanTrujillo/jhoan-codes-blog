@@ -1,50 +1,80 @@
 :root {
-	/** Colors **/
-    --bg-color: #171010;
-    --bg-color2: #2B2B2B;
-	--fg-color: #f2f2f2;
-    --accent: #f96d00;
-    
-	/** Font variables **/
-	--dm-sans:'DM Sans', sans-serif;
-	--roboto: 'Roboto', sans-serif;
+    --bulma-dark: hsl(0, 0%, 21%);
+    /** Font variables **/
+    --dm-sans: "DM Sans", sans-serif;
+    --roboto: "Roboto", sans-serif;
+}
+* {
+    font-family: var(--dm-sans);
 }
 
-.bg-color {
-    background: var(--bg-color);
+/** Default Font Styling **/
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: var(--roboto) !important;
+    font-weight: bold;
 }
 
-.bg-color2 {
-    background: var(--bg-color2);
+/* Changes the format of the bold letters added by summernotes */
+p b span {
+    font-family: var(--roboto) !important;
+    font-weight: bold;
 }
 
-.accent {
-    background: var(--accent);
-}
-
-.fg-color {
-    background: var(--fg-color);
+/* general body font style*/
+content p,
+span,
+ul,
+li {
+    font-family: var(--dm-sans) !important;
+    font-weight: 300;
 }
 
 /* Default Grid Styles */
 .grid-container {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr); /* 3 columns */
-	grid-auto-rows: minmax(100px, auto); /* Dynamic row height */
-	gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: minmax(100px, auto); /* Dynamic row height */
+    gap: 1.5rem;
 }
-  
+
 /* Media Queries for Tablet */
 @media screen and (max-width: 1024px) {
-	.grid-container {
-		grid-template-columns: repeat(2, 1fr); /* 2 columns */
-	}
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
 }
-  
+
 /* Media Queries for Mobile */
 @media screen and (max-width: 600px) {
-	.grid-container {
-		grid-template-columns: 1fr; /* Single column */
-		gap: 1rem;
-	}
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 1rem;
+    }
+}
+
+/* General custom style */
+.smooth-edge {
+    border-radius: 16px;
+}
+
+.post-title {
+    margin: auto;
+}
+
+/* Overides & edits to Bulma*/
+.card {
+    border: 1px solid var(--bulma-dark);
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+}
+
+.title {
+    font-family: var(--roboto);
 }
