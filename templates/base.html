@@ -1,5 +1,5 @@
 {% load static %}
-
+{% url 'home' as home_url %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,7 +25,7 @@
     <body>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="#">
+                <a class="navbar-item" aria-label="link to home page" href="{% url 'home'%}">
                     <img
                         src="/static/img/small_logo.png"
                         width="112"
@@ -48,9 +48,9 @@
 
             <div id="generalNavBar" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="#"> Home </a>
-                    <a class="navbar-item" href="#"> Blog </a>
-                    <a class="navbar-item" href="#"> About </a>
+                    <a class="navbar-item" aria-label="link to home page" href="{% url 'home'%}"> Home </a>
+                    <a class="navbar-item"aria-label="link to blog posts" href="{% url 'blog_list' %}"> Blog </a>
+                    <a class="navbar-item" aria-label="link to about page" href="#"> About </a>
                 </div>
 
                 <div class="navbar-end">
