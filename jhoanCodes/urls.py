@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 	# Import all views from blog app
 	# it uses the url route provided in the blog/views.py file
-	path('', include("blog.urls"), name="home"),
+	path('', include("blog.urls"), name="blog_app"),
 	# Add summernotes to include rich text functionalities
 	path('summernote/', include('django_summernote.urls')),
 ]
