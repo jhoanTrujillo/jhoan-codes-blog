@@ -1,33 +1,21 @@
 {% extends "base.html" %} 
 {% block content %}
 {% load static %}
-	<!-- Hero Image -->
-	<section class="hero is-warning is-halfheight delimiter">
-		<div class="is-flex is-flex-direction-row is-flex-wrap-wrap">
-			<div class="hero-body">
-				<div class="container has-text-centered">
-					<p class="title is-1 has-text-dark">
-					Jhoan Codes
-					</p>
-					<p class="subtitle is-4">
-					Hey! Welcome to my blog!
-					</p>
-				</div>
+	
+	<section class="section">
+		<div class="container">
+			<div class="content">
+				<h2 class="title is-2">Blog post</h2>
+				<p class="subtitle">
+					Here you can find a list with all my blog post. I hope you enjoy them. 
+				</p>
 			</div>
-			<img 
-				src="{% static 'img/index_hero_image.png' %}" 
-				alt="Image of Jhoan Trujillo weating a hoodie and smiling"
-				width="820px"
-				class="index-image"
-			>
 		</div>
-	  </section>
-	<!-- Context -->
+	</section>
 
 	<!-- Paginated list of blog post -->
-	<section class="section is-medium">
+	<section class="section">
 		<div class="container">
-			<H2 class="title is-2">Blog post</H2>
 			<div class="grid-container">
 				{% for post in post_list %}
 					<div class="card">
@@ -70,5 +58,4 @@
 			</div>
 		{% endif %}
 	</section>
-
 {% endblock content %}

@@ -61,10 +61,6 @@ li {
     border-radius: 16px;
 }
 
-.post-title {
-    margin: auto;
-}
-
 /* Overides & edits to Bulma*/
 .card {
     border: 1px solid var(--bulma-dark);
