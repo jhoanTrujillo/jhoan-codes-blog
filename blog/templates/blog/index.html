@@ -1,5 +1,33 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% block content %}
-
-
+	<section class="section is-medium">
+		<div class="grid-container">
+			{% for post in post_list %}
+				<div class="card column">
+					<div class="card-content">
+						<p class="title">{{ post.title }}</p>
+						<div class="content">{{ post.excerpt }}</div>
+						<span class="subtitle">Author: {{ post.author }}</span>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<!-- Pagination -->
+		{% if is_paginated %}
+			<div class="section">
+				<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+					{% if page_obj.has_previous %}
+						<a class="pagination-previous" aria-label="Go to previous page" href="?page={{ page_obj.previous_page_number }}">
+							Previous
+						</a>
+					{% endif %}
+					{% if page_obj.has_next %}
+						<a class="pagination-next" aria-label="Go to next page" href="?page={{ page_obj.next_page_number }}">
+							Next page
+						</a>
+					{% endif %}
+				</nav>
+			</div>
+		{% endif %}
+	</section>
 {% endblock content %}

@@ -1,8 +1,13 @@
 :root {
+	/** Colors **/
     --bg-color: #171010;
     --bg-color2: #2B2B2B;
+	--fg-color: #f2f2f2;
     --accent: #f96d00;
-    --fg-color: #f2f2f2;
+    
+	/** Font variables **/
+	--dm-sans:'DM Sans', sans-serif;
+	--roboto: 'Roboto', sans-serif;
 }
 
 .bg-color {
@@ -21,17 +26,24 @@
     background: var(--fg-color);
 }
 
-/* Sticky footer - from materialize css */
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-
-  * {
-	color: var(--fg-color);
-  }
+/* Default Grid Styles */
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* 3 columns */
+	grid-auto-rows: minmax(100px, auto); /* Dynamic row height */
+	gap: 10px; /* Gap between grid items */
+}
+  
+/* Media Queries for Tablet */
+@media screen and (max-width: 1024px) {
+	.grid-container {
+		grid-template-columns: repeat(2, 1fr); /* 2 columns */
+	}
+}
+  
+/* Media Queries for Mobile */
+@media screen and (max-width: 600px) {
+	.grid-container {
+		grid-template-columns: 1fr; /* Single column */
+	}
+}
