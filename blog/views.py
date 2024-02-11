@@ -6,8 +6,12 @@ from django.views import generic
 
 # Class based view 
 class IndexPage(generic.ListView):
-	# Import model to access data via generic view
-	# Filtering results by published post only
+	"""
+	Handles the index page data.
+	queryset: returns a list of published post
+	pagination: Total of 6, to keep the list small on index.
+	template_name: refers to the index template in blog templates
+	"""
 	queryset = Post.objects.filter(status=1).order_by("-created_on")
 	template_name = 'blog/index.html'
 	paginate_by = 6
@@ -34,5 +38,6 @@ def post_view(request, slug):
     return render(
         request,
         "blog/post_view.html",
-        {"post": post},
+        {"post": post,
+		 "author": "Jhoan Trujillo"},
     )
