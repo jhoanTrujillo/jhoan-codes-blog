@@ -14,13 +14,13 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: var(--roboto) !important;
+    font-family: var(--roboto);
     font-weight: bold;
 }
 
 /* Changes the format of the bold letters added by summernotes */
 p b span {
-    font-family: var(--roboto) !important;
+    font-family: var(--roboto);
     font-weight: bold;
 }
 
@@ -29,37 +29,11 @@ content p,
 p, span,
 ul, li,
 label {
-    font-family: var(--dm-sans) !important;
+    font-family: var(--dm-sans);
     font-weight: 300;
 }
 
-/* Grid-container */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-auto-rows: minmax(100px, auto); /* Dynamic row height */
-    gap: 1.5rem;
-}
-
-/* Media Queries for Tablet */
-@media screen and (max-width: 1024px) {
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    }
-}
-
-/* Media Queries for Mobile */
-@media screen and (max-width: 600px) {
-    .grid-container {
-        grid-template-columns: 1fr; /* Single column */
-        gap: 1rem;
-    }
-}
-
 /* override - Bulma*/
-.card {
-    border: 1px solid var(--bulma-dark);
-}
 
 .navbar {
     position: sticky;
@@ -75,11 +49,30 @@ label {
     border-radius: 16px;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: minmax(100px, auto); /* Dynamic row height */
+    gap: 1.5rem;
+}
+
+.form--top-divider {
+    border-top: 1px solid black;
+    padding-top: 1rem;
+}
+
+.card--border {
+    border: 1px solid var(--bulma-dark);
+}
+
+/* Form Style for allauth */
 form div {
     margin-bottom: 1rem;
 }
 
 form div label {
+    font-family: var(--roboto);
+    font-weight: 300;
     font-size: 1.3rem;
 }
 
@@ -97,4 +90,64 @@ form input[type=checkbox] {
     border: solid 1px darkgray;
     border-radius: 16px;
     padding: 1em;
+}
+
+.helptext ul {
+    list-style-type: disc;
+    margin-left: 5%;
+}
+
+/* Media Queries */
+
+/* Media Queries for tablets */
+@media screen and (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+
+    .form--card {
+        width: 65%;
+        margin: 0 auto;
+    }
+
+    form div {
+        max-width: 21rem;
+    }
+
+    .helptext ul {
+        margin-left: 10%;
+    }
+}
+
+/* Media Queries for Mobile */
+@media screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 1rem;
+    }
+
+    .form--card {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .helptext ul {
+        margin-left: 5%;
+    }
+}
+
+/* Desktop media query */
+@media only screen and (min-width: 1024px) {
+    .form--card {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .helptext ul {
+        margin-left: 10%;
+    }
+
+    form div {
+        max-width: 21rem;
+    }
 }

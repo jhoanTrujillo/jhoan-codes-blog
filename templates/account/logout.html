@@ -1,21 +1,44 @@
-{% extends "account/base.html" %}
-
+{% extends "base.html" %}
+{% load static %}
 {% load i18n %}
-
 {% block head_title %}{% trans "Sign Out" %}{% endblock head_title %}
-
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<section class="section hero is-medium">  
+  <div class="container">
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
-
+      <div class="tile is-parent section is-flex is-flex-direction-column">
+        <div class="tile is-flex is-flex-direction-column section">
+          <h1 class="title is-1">{% trans "Sign Out" %}</h1>
+          <p class="subtitle is-2">{% trans 'Are you sure you want to sign out?' %}</p>
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button type="submit" class="button is-danger">{% trans 'Take me out!' %}</button>
+          </form>
+        </div>
+        <div class="tile">
+          <img 
+          src="{% static 'img/logout.png' %}" 
+          alt="Image of a person opening a door"
+          >
+        </div>
+      </div>
+  </div>
+</section>
+<div class="section">
+  <div class="container">
+    <div class="section">
+      <p class="title">
+        Change your mind? 
+      </p>
+      <p class="subtitle">
+        Check some more my <a class="has-text-link" href="{% url 'blog_list' %}">blog posts</a>.
+      </p>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}

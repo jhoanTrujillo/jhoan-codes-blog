@@ -9,12 +9,12 @@
     <div class="hero-body">
       <div class="container is-max-desktop"> 
 
-        <div class="section smooth-edge card">
+        <div class="section smooth-edge card card--border form--card has-background-warning">
           <h1 class="title is-2">{% trans "Sign Up" %}</h1>
 
-          <p class="subtitle is-5">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+          <p class="subtitle is-5">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}" class="has-text-link">sign in</a>.{% endblocktrans %}</p>
 
-          <form class="signup form" id="signup_form" method="post" action="{% url 'account_signup' %}">
+          <form class="signup form form--top-divider" id="signup_form" method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
             {{ form.as_div }}
             {% if redirect_field_value %}

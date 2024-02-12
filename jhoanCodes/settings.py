@@ -26,7 +26,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com',]
 
@@ -160,8 +160,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication backend for allauth for latest version
 AUTHENTICATION_BACKENDS = (
-	"django.contrib/auth.backends.ModelBackend",
-	"allauth.accounts.auth_backends.AuthenticationBackend"
+	"django.contrib.auth.backends.ModelBackend",
 )
 
 SITE_ID = 1
