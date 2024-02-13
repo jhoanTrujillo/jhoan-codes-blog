@@ -40,10 +40,17 @@
 	<!-- New comment field -->
 	<section class="section" id="newComment">
 		<div class="container is-max-desktop">
+			{% if user.is_authenticated %}
 			<div class="mb-5">
 				<h3 class="title is-3">Leave a comment:</h3>
 				<p class="subtitle is-4">Posting as: {{ user.username }}</p>
 			</div>
+			{% else %}
+			<div class="mb-5">
+				<h3 class="title is-3">Leave a comment:</h3>
+				<p class="subtitle is-3">Don't be a stranger! Log in to leave a comment{{ user.username }}</p>
+			</div>
+			{% endif %}
 			<article class="media">
 				<figure class="media-left">
 				<p class="image is-64x64">
