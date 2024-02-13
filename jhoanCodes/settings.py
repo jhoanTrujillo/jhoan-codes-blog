@@ -48,6 +48,9 @@ INSTALLED_APPS = [
 	'django.contrib.sites',
 	# Summernote app
 	'django_summernote',
+	# Crispy forms
+	'crispy_forms',
+	"crispy_bulma",
 	'blog',
 ]
 
@@ -167,3 +170,7 @@ SITE_ID = 1
 # Redirects for allauth login and logout actions
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Crispy App for django packages for styling
+CRISPY_ALLOWED_TEMPLATE_PACKS = ("bulma",)
+CRISPY_TEMPLATE_PACK = "bulma"
