@@ -45,7 +45,7 @@ class Comment(models.Model):
 
    	# Changes the name format in the admin
 	def __str__(self):
-		return f"{self.body} | Commenter: {self.author}"
+		return f"{self.body}"
 	
 	class meta:
 		ordering = ["created_on"]

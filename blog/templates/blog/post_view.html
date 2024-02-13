@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
 	<!-- Content header-->
 	<section class="hero section has-background-warning">
 		<div class="container">
@@ -8,7 +9,12 @@
 					<div class="tile is-6 is-flex is-flex-direction-column is-justify-content-center">
 						<h1 class="title post-title">{{ post.title }}</h1>
 						<p><b>Author: {{ author }}</b></p>
-						<p><b>Created on: {{ post.created_on }}</b></p>
+						<p><b>Created on: {{ post.created_on|date:"D d M Y" }}</b></p>
+						<a href="#comments">
+							<p class="mt-1">
+								<i class="fa-regular fa-comment"></i> {{ comment_count }}
+							</p>
+						</a>
 					</div>
 					<div class="tile is-6">
 						<img 
@@ -24,10 +30,113 @@
 	</section>
 	<!-- Content starts here -->
 	<section class="section">
-		<div class="container">
+		<div class="container is-max-desktop">
 			<div class="content">
 				{{ post.content | safe }}
 			</div>
+		</div>
+	</section>
+	<div class="divider" ></div>
+	<!-- New comment field -->
+	<section class="section" id="newComment">
+		<div class="container is-max-desktop">
+			<div class="mb-5">
+				<h3 class="title is-3">Leave a comment:</h3>
+				<p class="subtitle is-4">Posting as: {{ user.username }}</p>
+			</div>
+			<article class="media">
+				<figure class="media-left">
+				<p class="image is-64x64">
+					<!-- Will replace image once cloudinary is up and running -->
+					<img src="https://bulma.io/images/placeholders/128x128.png">
+				</p>
+				</figure>
+				<div class="media-content">
+				{% if user.is_authenticated %}
+					<div class="field">
+						<p class="control">
+							<form id="commentForm"  method="post">
+								{{ comment_form | crispy }}
+								{% csrf_token %}
+								<div class="level-item level-left mt-5" id="submitButton">
+									<button class="button is-info">Submit</button>
+								</div>
+							</form>
+						</p>
+					</div>
+				{% else %}
+
+					<div class="field">
+						<p class="control has-background-light">
+							<p class="textarea">Log in to leave a comment</p>
+							<div>
+								<div class="level-item level-left mt-5" id="submitButton">
+									<button class="button is-link">Log In!</button>
+								</div>
+							</div>
+						</p>
+					</div>
+
+				{% endif %}
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<!-- Comment content -->
+	<section class="section" id="comments">
+		<div class="container is-max-desktop">
+		<div class="mb-4">
+			<p class="subtitle">
+				<i class="fa-regular fa-comment"></i>  Comments {{ comment_count }}
+			</p>
+		</div>
+		{% for comment in comments%}
+			{% if not comment.approved and comment.author == user %}
+			<article class="media">
+				<figure class="media-left">
+				<p class="image is-64x64">
+					<img src="https://bulma.io/images/placeholders/128x128.png">
+				</p>
+				</figure>
+				<div class="media-content">
+					<div class="content">
+						<p class="has-text-grey-lighter">
+						<strong class="has-text-grey-lighter">@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
+						<br>
+						{{ comment }}
+						</p>
+						<div class="has-text-danger has-background-light">
+							<p>
+								Your content is waiting for approval
+							</p>
+						</div >
+					</div>
+				</div>
+				<span class="icon has-text-danger">
+					<i class="fas fa-ban"></i>
+				</span>
+			</article>
+			{% elif comment.approval %}
+				<article class="media">
+					<figure class="media-left">
+					<p class="image is-64x64">
+						<img src="https://bulma.io/images/placeholders/128x128.png">
+					</p>
+					</figure>
+					<div class="media-content">
+						<div class="content">
+							<p>
+							<strong>@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
+							<br>
+							{{ comment }}
+							</p>
+						</div>
+					</div>
+				</article>
+			{% else %}
+			{% endif %}
+		{% endfor %}
 		</div>
 	</section>
 {% endblock content %}
