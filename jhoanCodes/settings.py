@@ -172,5 +172,5 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Crispy App for django packages for styling
-CRISPY_ALLOWED_TEMPLATE_PACKS = ("bulma",)
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bulma"
 CRISPY_TEMPLATE_PACK = "bulma"
