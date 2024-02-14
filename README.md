@@ -86,13 +86,10 @@ The technologies used to built this blog were:
 In the area below I break down all the testing done on the website. Code format, Color contrast, Font Readability, Manual testing, All is handle in the section below. 
 
 #### Color
-Testing done using the [WebAIM contrast checker](https://webaim.org/resources/contrastchecker/):
+Testing done using the [WebAIM contrast checker](https://webaim.org/resources/contrastchecker/). The main colors that the block uses for content pass the accessibility test.
 
-**Font against background**
-Below you an see the images of the contrast test.
-![]()
-![]()
-
+![white background against black font - accessibility test](repo/media/bg-white_vs_fg-black.png)
+![yellow background against black font - accessibility test](repo/media/fg-black_vs_bg-yellow.png)
 
 
 [Back to top](#jhoan-codes---the-blog)
