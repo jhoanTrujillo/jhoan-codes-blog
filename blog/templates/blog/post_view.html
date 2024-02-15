@@ -64,7 +64,7 @@
 				<p class="subtitle is-3">Don't be a stranger! Log in to leave a comment{{ user.username }}</p>
 			</div>
 			{% endif %}
-			<article class="media">
+			<div class="media">
 				<div class="media-content">
 				{% if user.is_authenticated %}
 					<div class="field">
@@ -93,7 +93,7 @@
 
 				{% endif %}
 				</div>
-			</article>
+			</div>
 		</div>
 	</div>
 
@@ -109,7 +109,7 @@
 			<!-- Comments -->
 				{% for comment in comments %}
 					{% if not comment.approval and comment.author == user %}
-					<article class="media">
+					<div class="media">
 						<div class="media-content">
 							<div class="content">
 								<p class="has-text-grey-lighter">
@@ -132,9 +132,9 @@
 						<span class="icon has-text-danger">
 							<i class="fas fa-ban"></i>
 						</span>
-					</article>
+					</div>
 					{% elif comment.approval %}
-						<article class="media">
+						<div class="media">
 							<div class="media-content">
 								<div class="content">
 									<p>
@@ -170,7 +170,7 @@
 								</div>
 							</nav>
 							{% endif %}	
-						</article>
+						</div>
 					{% endif %}
 			{% endfor %}
 		</div>
@@ -180,7 +180,7 @@
 	<div class="modal" aria-hidden="true">
 		<div class="modal-background">
 			<div class="modal-content">
-				<article class="message">
+				<div class="message">
 					<div class="message-header has-background-danger">
 						<p>
 							<b>
@@ -214,7 +214,7 @@
 							</div>
 						</div>
 					</div>
-				</article>
+				</div>
 			</div>
 		</div>
 		<button class="modal-close is-large" aria-label="Close modal"></button>

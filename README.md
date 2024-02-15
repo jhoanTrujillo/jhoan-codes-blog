@@ -96,11 +96,21 @@ The color palette was selected for it's simplicity, approachability, and ease of
 ### Python CI Linter
 Using the [CI python linter](https://pep8ci.herokuapp.com/) I noticed the majority of .py files created had small indentation issues, so I was able to correct the issues. It wasn't too time consuming, since there wasn't any major error or syntactical problem. It was mostly a matter of indentation and spaces. Here are some test:
 
-
+**Models.py - test **
 - ![](repo/media/models.py.png)
 
+**Signals.py - test **
+- [](repo/media/Signals.py.png)
 
+This specific test provided little to no proble, or time consumption since the process is mostly handle by the linter, and the corrections are simple indentation/white space removal. At least in my case. 
 
+### W3 HTML Validator test
+This test was a bit more lenghty as there were certain small issues that came up as the project became bigger and started using more HTML. Mostly, it came down to missplaced single tags, leaving trailing closing **/** slashes, and adding unnecessary aria labels in certain elements. 
+
+The issues I found weren't huge, or store breaking since plenty of manual test was done before the W3 testing. But there was a lot to correct when it came down to good practices and code tidiness.
+
+- [Here is a PDF file holding the first test and the results](repo/media/indexHTMLcheckPrefix.pdf)
+- [successful check](repo/media/tidy_index.png)
 
 [Back to top](#jhoan-codes---the-blog)
 ---
