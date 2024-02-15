@@ -15,4 +15,9 @@ urlpatterns = [
 		'blog/post/<slug:slug>/delete_comment/<int:comment_id>',
 		views.comment_delete, name='comment_delete'
 	),
+	path(
+		'blog/post/<slug:slug>/delete_comment/<int:comment_id>',
+		views.comment_delete, name='comment_delete'
+	),
+	path('profile/', views.profile, name='users-profile'),
 ]

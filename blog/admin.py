@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Profile
 from django_summernote.admin import SummernoteModelAdmin
 
 # Decorator needed to register a class based on a model.
@@ -15,3 +15,4 @@ class PostAdmin(SummernoteModelAdmin):
 
 # Models should be register below
 admin.site.register(Comment)
+admin.site.register(Profile)

@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Post, Comment
+from .models import Post, Comment, Profile
 # Imports generic class from django
 from django.views import generic
-from .forms import CommentForm
+from .forms import CommentForm, ProfileForm
 
 
 # Class based view 
@@ -19,12 +20,14 @@ class IndexPage(generic.ListView):
 	template_name = 'blog/index.html'
 	paginate_by = 6
       
+
 class PostList(generic.ListView):
 	# Import model to access data via generic view
 	# Filtering results by published post only
 	queryset = Post.objects.filter(status=1).order_by("-created_on")
 	template_name = 'blog/post_list.html'
 	paginate_by = 9
+     
 
 def post_view(request, slug):
     """
@@ -65,6 +68,7 @@ def post_view(request, slug):
 		},
     )
 
+
 def comment_edit(request, slug, comment_id):
     """
     view to edit comments
@@ -87,6 +91,7 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('post_view', args=[slug]))
       
+
 def comment_delete(request, slug, comment_id):
     """
     view to delete comment
@@ -103,3 +108,30 @@ def comment_delete(request, slug, comment_id):
                              'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_view', args=[slug]))
+
+@login_required
+def profile(request):
+    # Query all profiles
+    queryset = Profile.objects.all()
+    # Get the data from the user asking the request
+    profile =  get_object_or_404(queryset, user=request.user)
+
+    # Inherits value from comment_form in form.py
+    if request.method == "POST":
+        profile_form = ProfileForm(data=request.POST)
+        if profile_form.is_valid():
+            bio = profile_form.save(commit=False)
+            profile.bio = bio
+            bio.save()
+	
+    profile_form = ProfileForm()
+
+    # Renders page and pass profile data
+    return render(
+            request, 
+            'blog/profile.html',
+            {
+                "profile": profile,
+                "profile_form" : profile_form,
+            },
+    )

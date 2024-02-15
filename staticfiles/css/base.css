@@ -121,6 +121,12 @@ form input[type=checkbox] {
         background: var(--bulma-dark);
         margin: 0 auto;
     }
+
+    .bio-box {
+        min-width: 30rem;
+        min-height: 3rem;
+        max-width: 40rem;
+    }
 }
 
 /* Media Queries for Mobile */
@@ -145,6 +151,12 @@ form input[type=checkbox] {
         background: var(--bulma-dark);
         margin: 0 auto;
     }
+
+    .bio-box {
+        min-width: 15rem;
+        min-height: 3rem;
+        max-width: 18rem;
+    }
 }
 
 /* Desktop media query */
@@ -167,5 +179,11 @@ form input[type=checkbox] {
         height: 1px; 
         background: var(--bulma-dark);
         margin: 0 auto;
+    }
+
+    .bio-box {
+        min-width: 30rem;
+        min-height: 3rem;
+        max-width: 40rem;
     }
 }

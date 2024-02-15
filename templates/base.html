@@ -61,7 +61,7 @@
                         <div class="buttons">
                             {% if user.is_authenticated %}
                                 <div class="mr-5">
-                                    <a class="is-link">
+                                    <a class="is-link has-text-dark" href="{% url 'users-profile' %}">
                                         <b>Hey, {{ user.username }}!</b>
                                     </a>
                                 </div>
