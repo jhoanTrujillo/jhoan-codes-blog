@@ -52,9 +52,7 @@
 							<div class="content">{{ post.excerpt }}</div>
 						</div>
 						<footer class="card-footer">
-							<span class="card-footer-item">
-								Author: {{ post.author }}</span>
-							</span>
+							<span class="card-footer-item">Author: {{ post.author }}</span>
 							<span class="card-footer-item">{{ post.created_on }}</span>
 						</footer>
 					</div>
@@ -64,7 +62,7 @@
 		<!-- Pagination -->
 		{% if is_paginated %}
 			<div class="section">
-				<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+				<nav class="pagination is-centered" aria-label="pagination">
 					{% if page_obj.has_previous %}
 						<a class="pagination-previous" aria-label="Go to previous page" href="?page={{ page_obj.previous_page_number }}">
 							Previous
