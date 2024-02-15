@@ -40,12 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	# Cloudinary
+	'cloudinary_storage',
 	# Django allauth apps
 	'allauth',
     'allauth.account',
     'allauth.socialaccount',
 	'allauth.socialaccount.providers.google',
 	'django.contrib.sites',
+    'cloudinary',
 	# Summernote app
 	'django_summernote',
 	# Crispy forms

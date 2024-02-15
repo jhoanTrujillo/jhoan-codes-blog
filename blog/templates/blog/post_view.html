@@ -17,12 +17,17 @@
 						</a>
 					</div>
 					<div class="tile is-6">
+						{% if "placeholder" in post.featured_image.url %}
 						<img 
 						src="{% static 'img/default.jpg' %}" 
 						alt="Computer screen displaying html, css, and js code"
 						width="640px"
 						class="smooth-edge"
 						>
+						{% else %}
+						<img class="card-img-top" src=" {{ post.featured_image.url }}"
+						  alt="{{ post.title }}">
+						{% endif %}
 					</div>
 				</div>
 			</div>
