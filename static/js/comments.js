@@ -44,7 +44,7 @@ class CommentsEditor {
   
   deleteButtonSetup(deleteButton) {
     // Passes the comment ID to the modal delete button
-    const commentId = deleteButton.dataset.comment_id
+    const commentId = deleteButton.dataset.commentId;
     if (commentId !== "") {
       const deleteConfirmButton = document.querySelector("[data-inherit-id]")
       deleteConfirmButton.href = `delete_comment/${commentId}`;
