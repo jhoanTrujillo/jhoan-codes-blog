@@ -60,12 +60,6 @@
 			</div>
 			{% endif %}
 			<article class="media">
-				<figure class="media-left">
-				<p class="image is-64x64">
-					<!-- Will replace image once cloudinary is up and running -->
-					<img src="https://bulma.io/images/placeholders/128x128.png" aria-hidden="true">
-				</p>
-				</figure>
 				<div class="media-content">
 				{% if user.is_authenticated %}
 					<div class="field">
@@ -204,7 +198,7 @@
 								class="button is-danger mr-3"
 								data-inherit-id
 								aria-label="Delete comment"
-								href=""
+								href="#"
 								>
 								Delete
 							</a>

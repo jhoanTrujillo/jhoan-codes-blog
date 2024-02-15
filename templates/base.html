@@ -53,7 +53,9 @@
                 <div class="navbar-start">
                     <a class="navbar-item" aria-label="link to home page" href="{% url 'home'%}"> Home </a>
                     <a class="navbar-item"aria-label="link to blog posts" href="{% url 'blog_list' %}"> Blog </a>
-                    <a class="navbar-item" aria-label="link to about page" href="#"> About </a>
+                    {% if user.is_authenticated %}
+                        <a class="navbar-item" aria-label="link to about page" href="{% url 'users-profile' user.id %}">Profile</a>
+                    {% endif %}
                 </div>
 
                 <div class="navbar-end">
@@ -61,7 +63,7 @@
                         <div class="buttons">
                             {% if user.is_authenticated %}
                                 <div class="mr-5">
-                                    <a class="is-link has-text-dark" href="{% url 'users-profile' %}">
+                                    <a class="is-link has-text-dark" href="{% url 'users-profile' user.id %}">
                                         <b>Hey, {{ user.username }}!</b>
                                     </a>
                                 </div>
