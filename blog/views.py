@@ -1,11 +1,10 @@
+# Imports generic class from django
+from django.views import generic
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
 from .models import Post, Comment, Profile
-# Imports generic class from django
-from django.views import generic
 from .forms import CommentForm, BioForm
 
 

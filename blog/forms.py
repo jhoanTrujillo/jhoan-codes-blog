@@ -1,6 +1,5 @@
-from .models import Comment, Profile
 from django import forms
-
+from .models import Comment, Profile
 
 class CommentForm(forms.ModelForm):
     class Meta:

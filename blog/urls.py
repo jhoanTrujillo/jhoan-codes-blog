@@ -1,5 +1,5 @@
-from . import views
 from django.urls import path
+from . import views
 
 # List of urls that will be used by the app
 # this list is taken by the project level urls.py file
