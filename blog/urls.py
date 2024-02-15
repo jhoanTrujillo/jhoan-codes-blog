@@ -5,6 +5,14 @@ from django.urls import path
 # this list is taken by the project level urls.py file
 urlpatterns = [
 	path('', views.IndexPage.as_view(), name='home'),
-	path('blog/post_list', views.PostList.as_view(), name='blog_list'),
-	path('blog/post_list/<slug:slug>/', views.post_view, name='post_view'),
+	path('blog/', views.PostList.as_view(), name='blog_list'),
+	path('blog/post/<slug:slug>/', views.post_view, name='post_view'),
+	path(
+		'blog/post/<slug:slug>/edit_comment/<int:comment_id>',
+		views.comment_edit, name='comment_edit'
+	),
+	path(
+		'blog/post/<slug:slug>/delete_comment/<int:comment_id>',
+		views.comment_delete, name='comment_delete'
+	),
 ]

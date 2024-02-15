@@ -11,7 +11,7 @@
 						<p><b>Author: {{ author }}</b></p>
 						<p><b>Created on: {{ post.created_on|date:"D d M Y" }}</b></p>
 						<a href="#comments">
-							<p class="mt-1">
+							<p class="mt-1 has-text-dark">
 								<i class="fa-regular fa-comment"></i> {{ comment_count }}
 							</p>
 						</a>
@@ -36,7 +36,6 @@
 			</div>
 		</div>
 	</section>
-	<div class="divider" ></div>
 	<!-- New comment field -->
 	<section class="section" id="newComment">
 		<div class="container is-max-desktop">
@@ -55,7 +54,7 @@
 				<figure class="media-left">
 				<p class="image is-64x64">
 					<!-- Will replace image once cloudinary is up and running -->
-					<img src="https://bulma.io/images/placeholders/128x128.png">
+					<img src="https://bulma.io/images/placeholders/128x128.png" aria-hidden="true">
 				</p>
 				</figure>
 				<div class="media-content">
@@ -65,8 +64,8 @@
 							<form id="commentForm"  method="post">
 								{{ comment_form | crispy }}
 								{% csrf_token %}
-								<div class="level-item level-left mt-5" id="submitButton">
-									<button class="button is-info">Submit</button>
+								<div class="level-item level-left mt-5">
+									<button class="button is-info" id="submitButton">Submit</button>
 								</div>
 							</form>
 						</p>
@@ -76,9 +75,9 @@
 					<div class="field">
 						<p class="control has-background-light">
 							<p class="textarea">Log in to leave a comment</p>
-							<div>
-								<div class="level-item level-left mt-5" id="submitButton">
-									<button class="button is-link">Log In!</button>
+							<div class="level is-parent mt-3">
+								<div class="level-item level-left">
+									<a class="button is-link" href="{% url 'account_login' %}">Log In!</a>
 								</div>
 							</div>
 						</p>
@@ -93,57 +92,107 @@
 	<!-- Comment content -->
 	<section class="section" id="comments">
 		<div class="container is-max-desktop">
-		<div class="mb-4">
-			<p class="subtitle">
-				<i class="fa-regular fa-comment"></i>  Comments {{ comment_count }}
-			</p>
-		</div>
-		{% for comment in comments%}
-			{% if not comment.approved and comment.author == user %}
-			<article class="media">
-				<figure class="media-left">
-				<p class="image is-64x64">
-					<img src="https://bulma.io/images/placeholders/128x128.png">
+			<!-- Comment count section -->
+			<div class="mb-4">
+				<p class="subtitle">
+					<i class="fa-regular fa-comment"></i> Comments {{ comment_count }}
 				</p>
-				</figure>
-				<div class="media-content">
-					<div class="content">
-						<p class="has-text-grey-lighter">
-						<strong class="has-text-grey-lighter">@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
-						<br>
-						{{ comment }}
-						</p>
-						<div class="has-text-danger has-background-light">
-							<p>
-								Your content is waiting for approval
-							</p>
-						</div >
-					</div>
-				</div>
-				<span class="icon has-text-danger">
-					<i class="fas fa-ban"></i>
-				</span>
-			</article>
-			{% elif comment.approval %}
-				<article class="media">
-					<figure class="media-left">
-					<p class="image is-64x64">
-						<img src="https://bulma.io/images/placeholders/128x128.png">
-					</p>
-					</figure>
-					<div class="media-content">
-						<div class="content">
-							<p>
-							<strong>@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
-							<br>
-							{{ comment }}
-							</p>
-						</div>
-					</div>
-				</article>
-			{% else %}
-			{% endif %}
-		{% endfor %}
+			</div>
+			<!-- Comments -->
+				{% for comment in comments %}
+					{% if not comment.approval and comment.author == user %}
+						<article class="media">
+								<div class="media-content">
+									<div class="content">
+										<p>
+										<strong>@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
+										</p>
+										<p id="comment{{comment.id}}" aria-label="Comment">{{ comment.body }}</p>
+									</div>
+								</div>
+						</article>
+					{% elif comment.approval %}
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+									<strong>@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
+									</p>
+									<p id="comment{{comment.id}}" aria-label="Comment">{{ comment.body }}</p>
+								</div>
+							</div>
+							{% if user.is_authenticated and comment.author == user %}
+							<nav class="level is-mobile">
+								<div class="level-left">
+									<a class="level-item" >
+										<span class="icon is-small">
+											<i aria-label="Update comment" 
+											class="fas fa-edit edit-button" 
+											comment_id="{{ comment.id }}"></i>
+										</span>
+									</a>
+									<a class="level-item" >
+										<span class="icon is-small">
+											<i aria-label="Delete comment" 
+											class="fas fa-trash"
+											data-toggle-modal
+											data-comment-id="{{ comment.id }}"></i>
+										</span>
+									</a>
+								</div>
+							</nav>
+							{% endif %}	
+						</article>
+					{% endif %}
+			{% endfor %}
 		</div>
 	</section>
+
+	<!-- Delete confirmation modal -->
+	<div class="modal" aria-hidden="true">
+		<div class="modal-background"></div>
+		<div class="modal-content">
+				<article class="message">
+					<div class="message-header has-background-danger">
+						<p>
+							<b>
+								Delete comment?
+							</b>
+						</p>
+					  	<button class="delete is-primary" 
+						aria-label="Close modal" 
+						data-toggle-modal></button>
+					</div>
+					<div class="message-body">
+						<p class="subtitle is-4 has-text-centered">
+							Do you really want to delete the comment?
+							<br>
+							This can't be undone.
+						</p>
+						<div class="level mt-5 pt-3">
+							<div class="level-item">
+								<a 
+								class="button is-danger mr-3"
+								data-inherit-id
+								aria-label="Delete comment"
+								href=""
+								>
+								Delete
+							</a>
+							</div>
+							<div class="level-item">
+								<button class="button is-light mr-3" 
+								data-toggle-modal>Go back</button>
+							</div>
+						</div>
+					</div>
+					</div>
+				  </article>
+		</div>
+		<button class="modal-close is-large" aria-label="Close modal"></button>
+	</div>
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
