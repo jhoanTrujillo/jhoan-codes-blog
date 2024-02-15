@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+# Allows access to cloudinary on app
+from cloudinary.models import CloudinaryField
 
 # Options to show text draft or published
 # in the blog creation area of the admin
@@ -21,6 +23,7 @@ class Post(models.Model):
 	# auto_now_add will add the creation date of the post to the database
 	created_on = models.DateTimeField(auto_now_add=True)
 	updated_on = models.DateTimeField(auto_now=True)
+	featured_image = CloudinaryField('image', default='placeholder')
 	status = models.IntegerField(choices=STATUS, default=0)
 	
 	# Changes the name format in the admin
