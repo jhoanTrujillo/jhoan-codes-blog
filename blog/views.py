@@ -9,26 +9,26 @@ from django.views import generic
 from .forms import CommentForm, BioForm
 
 
-# Class based view 
+# Class based view
 class IndexPage(generic.ListView):
-	"""
-	Handles the index page data.
-	queryset: returns a list of published post
-	pagination: Total of 6, to keep the list small on index.
-	template_name: refers to the index template in blog templates
-	"""
-	queryset = Post.objects.filter(status=1).order_by("-created_on")
-	template_name = 'blog/index.html'
-	paginate_by = 6
-      
+    """
+    Handles the index page data.
+    queryset: returns a list of published post
+    pagination: Total of 6, to keep the list small on index.
+    template_name: refers to the index template in blog templates
+    """
+    queryset = Post.objects.filter(status=1).order_by("-created_on")
+    template_name = 'blog/index.html'
+    paginate_by = 6
+
 
 class PostList(generic.ListView):
-	# Import model to access data via generic view
-	# Filtering results by published post only
-	queryset = Post.objects.filter(status=1).order_by("-created_on")
-	template_name = 'blog/post_list.html'
-	paginate_by = 9
-     
+    # Import model to access data via generic view
+    # Filtering results by published post only
+    queryset = Post.objects.filter(status=1).order_by("-created_on")
+    template_name = 'blog/post_list.html'
+    paginate_by = 9
+
 
 def post_view(request, slug):
     """
@@ -42,11 +42,11 @@ def post_view(request, slug):
     # Access post model data. Only query published post
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    # Access the comment model data 
+    # Access the comment model data
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approval=True).count()
 
-	# Inherits value from comment_form in form.py
+    # Inherits value from comment_form in form.py
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -54,19 +54,19 @@ def post_view(request, slug):
             comment.author = request.user
             comment.post = post
             comment.save()
-	
+
     comment_form = CommentForm()
-	
+
     return render(
         request,
         "blog/post_view.html",
         {
-			"post": post,
-			"author": "Jhoan Trujillo",
-			"comments" : comments,
-			"comment_count" : comment_count,
-			"comment_form": comment_form,
-		},
+            "post": post,
+            "author": "Jhoan Trujillo",
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form,
+        },
     )
 
 
@@ -88,10 +88,12 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating comment!'
+            )
 
     return HttpResponseRedirect(reverse('post_view', args=[slug]))
-      
+
 
 def comment_delete(request, slug, comment_id):
     """
@@ -110,12 +112,13 @@ def comment_delete(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('post_view', args=[slug]))
 
+
 @login_required
 def profile(request, user_id):
     # Query all profiles
     queryset = Profile.objects.all()
     # Get the data from the user asking the request
-    profile =  get_object_or_404(queryset, user=user_id)
+    profile = get_object_or_404(queryset, user=user_id)
 
     # Inherits value from comment_form in form.py
     if request.method == "POST":
@@ -124,39 +127,19 @@ def profile(request, user_id):
             bio = profile_form.save(commit=False)
             profile.bio = bio
             bio.save()
-	
+
     bio_form = BioForm()
 
     # Renders page and pass profile data
     return render(
-            request, 
+            request,
             'blog/profile.html',
             {
                 "profile": profile,
-                "bio_form" : bio_form,
+                "bio_form": bio_form,
             },
     )
 
-# def bio_edit(request, user_id, id):
-#     """
-#     view to bio_edit
-#     """
-#     # Fetch the Profile instance associated with the current user
-#     profile = get_object_or_404(Profile, user=request.user)
-
-#     if request.method == "POST":        
-#         bio_form = BioForm(data=request.POST)
-#         print(bio_form)
-#         if bio_form.is_valid():
-#             bio = bio_form.save(commit=False)
-#             user = user
-#             profile.bio = bio
-#             profile.save()
-#             messages.add_message(request, messages.SUCCESS, 'Bio Updated!')
-#         else:
-#             messages.add_message(request, messages.ERROR, 'Error updating bio!')
-
-#     return HttpResponseRedirect(reverse('profile/', args=[user.id]))
 
 def bio_edit(request, user_id, id):
     """
@@ -165,14 +148,18 @@ def bio_edit(request, user_id, id):
     # Fetch the Profile instance associated with the current user
     profile = get_object_or_404(Profile, user=request.user)
 
-    if request.method == "POST":        
+    if request.method == "POST":
         bio_form = BioForm(data=request.POST, instance=profile)
         if bio_form.is_valid():
             bio_form.save()
             messages.success(request, 'Bio Updated!')
             # Redirect to the profile page
-            return HttpResponseRedirect(reverse('users-profile', args=[request.user.id]))
+            return HttpResponseRedirect(reverse(
+                'users-profile', args=[request.user.id]
+            ))
         else:
             messages.error(request, 'Error updating bio!')
-            
-    return HttpResponseRedirect(reverse('users-profile', args=[request.user.id]))
+
+    return HttpResponseRedirect(reverse(
+        'users-profile', args=[request.user.id]
+    ))

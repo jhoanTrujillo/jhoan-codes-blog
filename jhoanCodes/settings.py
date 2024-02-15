@@ -16,23 +16,20 @@ import dj_database_url
 # Looks for the env.py file
 # If the file exist, imports the file.
 if os.path.isfile('env.py'):
-	import env
-	
+    import env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com',]
-
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com', ]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,47 +37,36 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	# Cloudinary
-	'cloudinary_storage',
-	# Django allauth apps
-	'allauth',
+    # Cloudinary
+    'cloudinary_storage',
+    # Django allauth apps
+    'allauth',
     'allauth.account',
     'allauth.socialaccount',
-	'allauth.socialaccount.providers.google',
-	'django.contrib.sites',
+    'allauth.socialaccount.providers.google',
+    'django.contrib.sites',
     'cloudinary',
-	# Summernote app
-	'django_summernote',
-	# Crispy forms
-	'crispy_forms',
-	"crispy_bulma",
-	'blog',
+    # Summernote app
+    'django_summernote',
+    # Crispy forms
+    'crispy_forms',
+    "crispy_bulma",
+    'blog',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-	# Add white noise middleware to app for static file deployment
-	'whitenoise.middleware.WhiteNoiseMiddleware',
+    # Add white noise middleware to app for static file deployment
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	# Allauth django app middleware
-	"allauth.account.middleware.AccountMiddleware",
+    # Allauth django app middleware
+    "allauth.account.middleware.AccountMiddleware",
 ]
-
-# Adding google as a registration provider
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-		"SCOPE": [
-			"profile",
-			"email"
-        ],
-		"AUTH_PARAMS" : {"access_type" : "online"},
-    }
-}
 
 ROOT_URLCONF = 'jhoanCodes.urls'
 
@@ -95,8 +81,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-				# Needed for allauth functionalities
-				'django.template.context_processors.request',
+                # Needed for allauth functionalities
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -164,9 +150,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Authentication backend for allauth for latest version
+# Authentication backend for allauth for latest version
 AUTHENTICATION_BACKENDS = (
-	"django.contrib.auth.backends.ModelBackend",
+    "django.contrib.auth.backends.ModelBackend",
 )
 
 SITE_ID = 1

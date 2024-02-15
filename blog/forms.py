@@ -7,7 +7,8 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',)
 
-# This handles the change of the bio 
+
+# This handles the change of the bio
 class BioForm(forms.ModelForm):
     class Meta:
         model = Profile
