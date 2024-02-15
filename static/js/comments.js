@@ -24,8 +24,9 @@ class CommentsEditor {
 
   // Handles the click of a edit button
   editComment(e) {
-    let commentId = e.target.getAttribute("comment_id");
-    let commentContent = document.getElementById(`comment${commentId}`).innerText;
+    let commentId = e.target.dataset.commentId;
+    console.log(commentId)
+    let commentContent = document.getElementById(`comment${commentId}`);
     this.commentText.value = commentContent;
     this.submitButton.innerText = "Update";
     this.commentForm.setAttribute("action", `edit_comment/${commentId}`);
