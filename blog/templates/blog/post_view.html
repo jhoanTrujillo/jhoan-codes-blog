@@ -22,11 +22,15 @@
 						src="{% static 'img/default.jpg' %}" 
 						alt="Computer screen displaying html, css, and js code"
 						width="640px"
-						class="smooth-edge"
+						class="smooth-edge mt-5"
 						>
 						{% else %}
-						<img class="card-img-top" src=" {{ post.featured_image.url }}"
-						  alt="{{ post.title }}">
+						<img 
+						src="{{ post.featured_image.url }}" 
+						alt="{{ post.title }}"
+						width="640px"
+						class="smooth-edge mt-5"
+						>
 						{% endif %}
 					</div>
 				</div>
