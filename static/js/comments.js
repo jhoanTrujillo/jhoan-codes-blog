@@ -36,8 +36,8 @@ class CommentsEditor {
     this.modalToggleButtons.forEach(button => {
       button.addEventListener('click', (e) => {
         const button = e.target;
-        this.deleteButtonSetup(button) 
-        this.toggleModal()
+        this.deleteButtonSetup(button);
+        this.toggleModal();
       });
     });
   }
@@ -46,7 +46,7 @@ class CommentsEditor {
     // Passes the comment ID to the modal delete button
     const commentId = deleteButton.dataset.commentId;
     if (commentId !== "") {
-      const deleteConfirmButton = document.querySelector("[data-inherit-id]")
+      const deleteConfirmButton = document.querySelector("[data-inherit-id]");
       deleteConfirmButton.href = `delete_comment/${commentId}`;
     }
   }
@@ -61,4 +61,3 @@ class CommentsEditor {
 }
 
 const commentEditor = new CommentsEditor(".modal");
-
