@@ -91,6 +91,16 @@ Testing done using the [WebAIM contrast checker](https://webaim.org/resources/co
 ![white background against black font - accessibility test](repo/media/bg-white_vs_fg-black.png)
 ![yellow background against black font - accessibility test](repo/media/fg-black_vs_bg-yellow.png)
 
+The color palette was selected for it's simplicity, approachability, and ease of use. In the test we can notice how the colors match perfectly to bring a full accessibly experience, and to ensure most readers have a easy time using the site.
+
+### Python CI Linter
+Using the [CI python linter](https://pep8ci.herokuapp.com/) I noticed the majority of .py files created had small indentation issues, so I was able to correct the issues. It wasn't too time consuming, since there wasn't any major error or syntactical problem. It was mostly a matter of indentation and spaces. Here are some test:
+
+
+- ![](repo/media/models.py.png)
+
+
+
 
 [Back to top](#jhoan-codes---the-blog)
 ---

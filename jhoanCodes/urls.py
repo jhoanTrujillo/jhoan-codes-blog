@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-	path("", include("blog.urls"), name="blog_app"),
-	# Django default admin path
+    path("", include("blog.urls"), name="blog_app"),
+    # Django default admin path
     path("admin/", admin.site.urls),
-	# Allauth app default accounts path
-	path("accounts/", include("allauth.urls")),
-	# it uses the url route provided in the blog/views.py file
-	# Add summernotes to include rich text functionalities
-	path("summernote/", include('django_summernote.urls')),
+    # Allauth app default accounts path
+    path("accounts/", include("allauth.urls")),
+    # it uses the url route provided in the blog/views.py file
+    # Add summernotes to include rich text functionalities
+    path("summernote/", include('django_summernote.urls')),
 ]
