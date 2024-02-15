@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 from .models import Post, Comment, Profile
 # Imports generic class from django
 from django.views import generic
-from .forms import CommentForm, ProfileForm
+from .forms import CommentForm, BioForm
 
 
 # Class based view 
@@ -110,21 +111,21 @@ def comment_delete(request, slug, comment_id):
     return HttpResponseRedirect(reverse('post_view', args=[slug]))
 
 @login_required
-def profile(request):
+def profile(request, user_id):
     # Query all profiles
     queryset = Profile.objects.all()
     # Get the data from the user asking the request
-    profile =  get_object_or_404(queryset, user=request.user)
+    profile =  get_object_or_404(queryset, user=user_id)
 
     # Inherits value from comment_form in form.py
     if request.method == "POST":
-        profile_form = ProfileForm(data=request.POST)
+        profile_form = BioForm(data=request.POST)
         if profile_form.is_valid():
             bio = profile_form.save(commit=False)
             profile.bio = bio
             bio.save()
 	
-    profile_form = ProfileForm()
+    bio_form = BioForm()
 
     # Renders page and pass profile data
     return render(
@@ -132,6 +133,46 @@ def profile(request):
             'blog/profile.html',
             {
                 "profile": profile,
-                "profile_form" : profile_form,
+                "bio_form" : bio_form,
             },
     )
+
+# def bio_edit(request, user_id, id):
+#     """
+#     view to bio_edit
+#     """
+#     # Fetch the Profile instance associated with the current user
+#     profile = get_object_or_404(Profile, user=request.user)
+
+#     if request.method == "POST":        
+#         bio_form = BioForm(data=request.POST)
+#         print(bio_form)
+#         if bio_form.is_valid():
+#             bio = bio_form.save(commit=False)
+#             user = user
+#             profile.bio = bio
+#             profile.save()
+#             messages.add_message(request, messages.SUCCESS, 'Bio Updated!')
+#         else:
+#             messages.add_message(request, messages.ERROR, 'Error updating bio!')
+
+#     return HttpResponseRedirect(reverse('profile/', args=[user.id]))
+
+def bio_edit(request, user_id, id):
+    """
+    View to edit user's bio
+    """
+    # Fetch the Profile instance associated with the current user
+    profile = get_object_or_404(Profile, user=request.user)
+
+    if request.method == "POST":        
+        bio_form = BioForm(data=request.POST, instance=profile)
+        if bio_form.is_valid():
+            bio_form.save()
+            messages.success(request, 'Bio Updated!')
+            # Redirect to the profile page
+            return HttpResponseRedirect(reverse('users-profile', args=[request.user.id]))
+        else:
+            messages.error(request, 'Error updating bio!')
+            
+    return HttpResponseRedirect(reverse('users-profile', args=[request.user.id]))

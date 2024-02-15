@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 # Allows access to cloudinary on app
 from cloudinary.models import CloudinaryField
-# Adds signals to automate profile creation
-from django.db.models.signals import post_save
 
 
 # Options to show text draft or published
@@ -57,10 +55,11 @@ class Comment(models.Model):
 		ordering = ["created_on"]
 
 # Profile model edited from https://dev.to/earthcomfy/django-user-profile-3hik
+# The code was slightly edited for my personal needs and the user of cloudinary
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = CloudinaryField('image', default='placeholder')
-    bio = models.TextField(default="bio")
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	image = CloudinaryField('image', default='placeholder')
+	bio = models.TextField(default="bio")
 
-    def __str__(self):
-        return f'{self.user.username} Profile'
+	def __str__(self):
+		return f'{self.user.username} Profile'

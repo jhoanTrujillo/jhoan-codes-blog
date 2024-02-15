@@ -111,15 +111,15 @@
 				{% for comment in comments %}
 					{% if not comment.approval and comment.author == user %}
 					<article class="media">
-						<figure class="media-left">
-						<p class="image is-64x64">
-							<img src="https://bulma.io/images/placeholders/128x128.png">
-						</p>
-						</figure>
 						<div class="media-content">
 							<div class="content">
 								<p class="has-text-grey-lighter">
-								<strong class="has-text-grey-lighter">@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
+								<strong class="has-text-grey-lighter">
+									<a href="{% url 'users-profile' comment.author.id %}">@{{ comment.author }}</a>
+								</strong> 
+								<small>
+									{{ comment.created_on|date:"D d M Y" }}
+								</small>
 								<br>
 								{{ comment.body }}
 								</p>
@@ -139,9 +139,15 @@
 							<div class="media-content">
 								<div class="content">
 									<p>
-									<strong>@{{ comment.author }}</strong> <small>{{ comment.created_on|date:"D d M Y" }}</small>
+										<strong>
+											<a href="{% url 'users-profile' comment.author.id %}">@{{ comment.author }}</a>
+										</strong> 
+										<small>
+											{{ comment.created_on|date:"D d M Y" }}
+										</small>
+										<br>
+										{{ comment.body }}
 									</p>
-									<p id="comment{{comment.id}}" aria-label="Comment">{{ comment.body }}</p>
 								</div>
 							</div>
 							{% if user.is_authenticated and comment.author == user %}
