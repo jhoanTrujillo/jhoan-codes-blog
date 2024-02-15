@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 	<div class="section">
 		<div class="container">
-			
+
 		</div>
 	</div>
 	<!-- Content header-->
@@ -26,14 +26,14 @@
 						<img 
 						src="{% static 'img/default.jpg' %}" 
 						alt="Computer screen displaying html, css, and js code"
-						width="640px"
+						width="640"
 						class="smooth-edge mt-5"
 						>
 						{% else %}
 						<img 
 						src="{{ post.featured_image.url }}" 
 						alt="{{ post.title }}"
-						width="640px"
+						width="640"
 						class="smooth-edge mt-5"
 						>
 						{% endif %}
@@ -43,19 +43,19 @@
 		</div>
 	</section>
 	<!-- Content starts here -->
-	<section class="section">
+	<div class="section">
 		<div class="container is-max-desktop">
 			<div class="content">
 				{{ post.content | safe }}
 			</div>
 		</div>
-	</section>
+	</div>
 	<!-- New comment field -->
-	<section class="section" id="newComment">
+	<div class="section" id="newComment">
 		<div class="container is-max-desktop">
 			{% if user.is_authenticated %}
 			<div class="mb-5">
-				<h3 class="title is-3">Leave a comment:</h3>
+				<p class="title is-3">Leave a comment:</p>
 				<p class="subtitle is-4">Posting as: {{ user.username }}</p>
 			</div>
 			{% else %}
@@ -95,10 +95,10 @@
 				</div>
 			</article>
 		</div>
-	</section>
+	</div>
 
 	<!-- Comment content -->
-	<section class="section" id="comments">
+	<div class="section" id="comments">
 		<div class="container is-max-desktop">
 			<!-- Comment count section -->
 			<div class="mb-4">
@@ -174,12 +174,12 @@
 					{% endif %}
 			{% endfor %}
 		</div>
-	</section>
+	</div>
 
 	<!-- Delete confirmation modal -->
 	<div class="modal" aria-hidden="true">
-		<div class="modal-background"></div>
-		<div class="modal-content">
+		<div class="modal-background">
+			<div class="modal-content">
 				<article class="message">
 					<div class="message-header has-background-danger">
 						<p>
@@ -203,19 +203,19 @@
 								class="button is-danger mr-3"
 								data-inherit-id
 								aria-label="Delete comment"
-								href="#"
-								>
-								Delete
-							</a>
+								href="#">
+									Delete
+								</a>
 							</div>
 							<div class="level-item">
-								<button class="button is-light mr-3" 
-								data-toggle-modal>Go back</button>
+								<button class="button is-light mr-3" data-toggle-modal>
+									Go back
+								</button>
 							</div>
 						</div>
 					</div>
-					</div>
-				  </article>
+				</article>
+			</div>
 		</div>
 		<button class="modal-close is-large" aria-label="Close modal"></button>
 	</div>
