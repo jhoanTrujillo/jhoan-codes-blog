@@ -6,12 +6,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Jhoan Codes</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Roboto:wght@400;500;700&display=swap"
             rel="stylesheet"
@@ -20,20 +20,21 @@
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-        />
+            >
         <!-- custom CSS -->
-        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
 	
     <body>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar" role="navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" aria-label="link to home page" href="{% url 'home'%}">
                     <img
                         src="/static/img/small_logo.png"
                         width="112"
                         height="28"
-                    />
+                        alt="Jhoan Codes Logo"
+                    >
                 </a>
 
                 <a
@@ -52,7 +53,7 @@
             <div id="generalNavBar" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" aria-label="link to home page" href="{% url 'home'%}"> Home </a>
-                    <a class="navbar-item"aria-label="link to blog posts" href="{% url 'blog_list' %}"> Blog </a>
+                    <a class="navbar-item" aria-label="link to blog posts" href="{% url 'blog_list' %}"> Blog </a>
                     {% if user.is_authenticated %}
                         <a class="navbar-item" aria-label="link to about page" href="{% url 'users-profile' user.id %}">Profile</a>
                     {% endif %}
