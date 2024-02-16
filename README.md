@@ -37,7 +37,7 @@ To see the list of features and their current state, please see the [Project boa
 #### Wireframe & Framework
 THe wireframe was easy. Since it is a personal project, I was able to just go with my own sense of style and aesthetic, also, bulma makes styling so easy, that designing for desktop was a great alternative, as the framework is design with mobile in mind by default, so all the elements/styling choices, default to a nice mobile viewport display. 
 
-- [Here is the pdf file showing the overall experience - it was done via canvas]()
+- [Here is the pdf file showing the overall experience - it was done via canvas](repo/media/logo.pdf)
 
 #### Fonts
 **Roboto/Bold**: The font is simple, clear, and easy to read. Additionally, the roundest of the font make it somehow approachable or friendly. This should create a welcoming/inviting experience.
@@ -55,10 +55,14 @@ I wanted a light and energetic color palette that would compliment the selection
 ---
 
 ## Database Design
-althought there are several models created for the creation of the project some of them are handle by apps and django packages. For example, the superusers/admin access was handle by django backend functionality. While the visitor/user access and registration, was handle by AllAuth. As such, the database use for those two specific cases won't be added to the section below. 
+Although there are several models created for the project, some of them are handled by apps and Django packages. For example, superuser/admin access is managed by Django backend functionality, while visitor/user access and registration are handled by AllAuth. Therefore, the databases used for these specific cases won't be added to the section below.
+
+Regarding the database, we have some basic models such as Post and Comments, which complement each other and communicate via a Foreign Key relationship, or Many-to-One. Since several comments are associated with one post, and several posts can be connected to a single user, but as mentioned before, the users won't be displayed here, as Django has a module that handles that for us.
+
+Now, the profile is interesting because it requires the use of signals and the creation of a profile model. This model connects on a One-to-One basis with a User, meaning one user can only have one profile and vice versa. However, the signals were needed to enable the creation of a new profile when a user is created.
 
 
-
+- ![database](repo/media/current_database.png)
 
 
 [Back to top](#jhoan-codes---the-blog)
