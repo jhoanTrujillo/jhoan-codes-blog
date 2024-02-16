@@ -87,7 +87,7 @@ The technologies used to built this blog were:
 - [**Remove.bg**](https://www.remove.bg/): Website that removes images background with the help of AI. The free plan returns a lower quality image, but they are still usable.
 - Cloudinary: a cloudbased media servicing site that offers a free plan. 
 
-### Clone & local testing.
+### Clone Repo
 To clone this project you just need to use the link in the github repo. Once in your desired folder run the command:
 
 ```pip3 install -r requirements.txt```
@@ -96,9 +96,11 @@ Once that is done, you might need to setup postgreSQL server to add the database
 
  of the site. Additionally, once the site is in place, you can use your terminal, ensure you are in the same folder, and in the command line type:
 
-```python3 ```
+
 
 ### Deployment
+
+coming soon
 
 
 

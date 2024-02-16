@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from cloudinary.forms import cl_init_js_callbacks   
 from .models import Post, Comment, Profile
 from .forms import CommentForm, BioForm
 
@@ -166,3 +167,4 @@ def bio_edit(request, user_id, id):
     return HttpResponseRedirect(reverse(
         'users-profile', args=[request.user.id]
     ))
+
