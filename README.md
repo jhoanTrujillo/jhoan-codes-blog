@@ -87,22 +87,92 @@ The technologies used to built this blog were:
 - [**Remove.bg**](https://www.remove.bg/): Website that removes images background with the help of AI. The free plan returns a lower quality image, but they are still usable.
 - Cloudinary: a cloudbased media servicing site that offers a free plan. 
 
-### Clone Repo
-To clone this project you just need to use the link in the github repo. Once in your desired folder run the command:
-
-```pip3 install -r requirements.txt```
-
-Once that is done, you might need to setup postgreSQL server to add the database to your project. For that, 
-
- of the site. Additionally, once the site is in place, you can use your terminal, ensure you are in the same folder, and in the command line type:
-
-
-
 ### Deployment
 
-coming soon
+Deploying this project with Heroku is straightforward:
 
+- Sign up for a Heroku account if you haven't already.
+- In your Heroku Dashboard, click "New" in the top-right corner, then select "Create new app" from the dropdown menu.
+- Choose a unique name for your app, select the region closest to you (EU or USA), and click "Create App."
+- In your app's Settings, click "Reveal Config Vars" to set your environment variables.
 
+That's it! Your project is now ready for deployment on Heroku.
+
+**Key Value**
+- CLOUDINARY_URL	insert your own Cloudinary API key here
+- DATABASE_URL	insert your own ElephantSQL database URL here
+- DISABLE_COLLECTSTATIC	1 (this is temporary, and can be removed for the final deployment)
+- SECRET_KEY	this can be any random secret key
+
+Heroku needs two additional files in order to deploy properly.
+
+- requirements.txt
+- Procfile
+
+Here are the steps to install requirements, update the requirements file, create the Procfile, and deploy to Heroku:
+
+1. **Install the project's requirements** (if applicable) with
+```bash
+pip3 install -r requirements.txt
+```
+
+2. If you've installed additional packages, **update the requirements file with**:
+```bash
+pip3 freeze --local > requirements.txt
+```
+
+3. **Create the Procfile using**:
+```
+echo "web: gunicorn app_name.wsgi" > Procfile
+```
+
+Replace "app_name" with the name of your primary Django app (the folder where settings.py is located, in this case, "stackportfolio").
+
+4. To connect your GitHub repository to the newly created app for Heroku deployment:
+
+	- Either select "Automatic Deployment" from the Heroku app settings.
+	- Or, in the Terminal/CLI, connect to Heroku:
+
+```bash
+heroku login -i
+heroku git:remote -a app_name
+```
+
+5. After adding, committing, and pushing your changes to GitHub, deploy to Heroku with:
+
+```bash
+git push heroku main
+```
+
+### Local Deployment
+This project can be cloned or forked to create a local copy on your system.
+
+Before proceeding, ensure you have installed the necessary packages listed in the requirements.txt file:
+
+```bash
+pip3 install -r requirements.txt
+```
+
+Additionally, create a new file named env.py at the root-level directory. Include the same environment variables listed in the Heroku deployment steps. Here's a sample env.py file:
+
+```python
+# Sample env.py file
+
+SECRET_KEY = 'your_secret_key'
+DEBUG = 'True'
+DATABASE_URL = 'your_database_url'
+```
+
+### ElephantSQL 
+
+This project uses ElephantSQL for the PostgreSQL Database. To obtain your own PostgreSQL Database, sign up with your GitHub account, then follow these steps:
+
+- Click "Create New Instance" to start a new database.
+- Provide a name (commonly the name of the project, e.g., stackportfolio).
+- Select the "Tiny Turtle (Free)" plan.
+- You can leave the Tags blank.
+- Select the Region and Data Center closest to you.
+- Once created, click on the new database name, where you can view the database URL and Password.
 
 [Back to top](#jhoan-codes---the-blog)
 ---
@@ -148,7 +218,7 @@ Below I would like to share a couple of videos navigating the site, in an late s
 
 - ![mobile viewport]()
 
-### BUGS!!
+### BUGS!!
 
 For this project personal circumstances made it so I wasn't able to use all the time I had a hand, in fact, This project was built in four day! which is not the best timeframe to built a robust blogging solution with not much backend experience, as such, I decided to hunt for as many bugs as possible to work on the improvement of the platform in the long term. 
 
