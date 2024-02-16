@@ -211,20 +211,19 @@ On a side note, the signup page seems to be having some issues with [W3 HTML val
 - [Here is a PDF file holding the first test and the results](repo/media/indexHTMLcheckPrefix.pdf)
 - ![successful check](repo/media/tidy_index.png)
 
-### Manual Testing
-Bulma CSS, is an amazing framework and it played an amazing part on making my project as responsive as possible. Of course, there were sections where I had to use CSS to correct and change minor responsiveness details, but overall the project adapts nicely to different screen sizes. 
-
-Below I would like to share a couple of videos navigating the site, in an late stage in different viewports:
-
-- ![mobile viewport]()
-
 ### BUGS!!
 
 For this project personal circumstances made it so I wasn't able to use all the time I had a hand, in fact, This project was built in four day! which is not the best timeframe to built a robust blogging solution with not much backend experience, as such, I decided to hunt for as many bugs as possible to work on the improvement of the platform in the long term. 
 
 Consider this version, a MVP, which sets out to do it's job. Provide a basic blogging experience with some extra community building features. 
 
-- In my search, I found and fixed a couple of bugs but there are many that 
+- In my search, please if you find any bug in styling or any other matter, do contact me.
 
 [Back to top](#jhoan-codes---the-blog)
 ---
+### Acknowledgements
+
+This was a tough project and there is still so much more I would love to add on in the future. I couldn't have gotten so much done without the feedback and advice from mentors, colleagues and friends. I would like to thank the following people for their help and support:
+
+- To my wife Nupoor, as she provided amazing support while working in the project in a crunch. 
+- My colleague [Stephen Dawson](https://github.com/stephendawsondev) for providing amazing support and feedback while working on the project.
