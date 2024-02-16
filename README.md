@@ -29,10 +29,15 @@ The decision to create a blog stemmed from my desire to establish a space where 
 All user stories & epics can be find in the [Project board](https://github.com/users/jhoanTrujillo/projects/4)
 
 #### Feature List
-There were many features I wanted to implement in the blog. However, due to time constraints, I decided to prioritize the main features essential for a functioning blog. To allow room for future features and to adhere to a proper agile process, I included all desired features in the list, although not all were ultimately implemented.
+There were many features I wanted to implement in the blog. However, due to time constraints, I decided to prioritize the main features essential for a functioning blog. To allow room for future features and to adhere to a proper agile process, I included all desired features in the list, although not all were ultimately implemented. This was due to time constraints sadly.
+
+To see the list of features and their current state, please see the [Project board](https://github.com/users/jhoanTrujillo/projects/4).
 
 ### UI
 #### Wireframe & Framework
+THe wireframe was easy. Since it is a personal project, I was able to just go with my own sense of style and aesthetic, also, bulma makes styling so easy, that designing for desktop was a great alternative, as the framework is design with mobile in mind by default, so all the elements/styling choices, default to a nice mobile viewport display. 
+
+- [Here is the pdf file showing the overall experience - it was done via canvas]()
 
 #### Fonts
 **Roboto/Bold**: The font is simple, clear, and easy to read. Additionally, the roundest of the font make it somehow approachable or friendly. This should create a welcoming/inviting experience.
@@ -76,9 +81,22 @@ The technologies used to built this blog were:
 - **ElephantSQL**: A PostgreSQL database hosting service. Their free plan makes it convenient for small portfolio projects such as this. 
 - [**Diagram.io**](https://app.diagrams.net/): Free diagram making tool online.
 - [**Remove.bg**](https://www.remove.bg/): Website that removes images background with the help of AI. The free plan returns a lower quality image, but they are still usable.
+- Cloudinary: a cloudbased media servicing site that offers a free plan. 
 
---- 
+### Clone & local testing.
+To clone this project you just need to use the link in the github repo. Once in your desired folder run the command:
+
+```pip3 install -r requirements.txt```
+
+Once that is done, you might need to setup postgreSQL server to add the database to your project. For that, 
+
+ of the site. Additionally, once the site is in place, you can use your terminal, ensure you are in the same folder, and in the command line type:
+
+```python3 ```
+
 ### Deployment
+
+
 
 [Back to top](#jhoan-codes---the-blog)
 ---
@@ -123,6 +141,14 @@ Bulma CSS, is an amazing framework and it played an amazing part on making my pr
 Below I would like to share a couple of videos navigating the site, in an late stage in different viewports:
 
 - ![mobile viewport]()
+
+### BUGS!!
+
+For this project personal circumstances made it so I wasn't able to use all the time I had a hand, in fact, This project was built in four day! which is not the best timeframe to built a robust blogging solution with not much backend experience, as such, I decided to hunt for as many bugs as possible to work on the improvement of the platform in the long term. 
+
+Consider this version, a MVP, which sets out to do it's job. Provide a basic blogging experience with some extra community building features. 
+
+- In my search, I found and fixed a couple of bugs but there are many that 
 
 [Back to top](#jhoan-codes---the-blog)
 ---
