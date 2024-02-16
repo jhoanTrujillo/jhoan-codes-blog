@@ -1,11 +1,6 @@
 {% extends "base.html" %} {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
-	<div class="section">
-		<div class="container">
-
-		</div>
-	</div>
 	<!-- Content header-->
 	<section class="hero section has-background-warning">
 		<div class="container">
@@ -23,19 +18,19 @@
 					</div>
 					<div class="tile is-6">
 						{% if "placeholder" in post.featured_image.url %}
-						<img 
-						src="{% static 'img/default.jpg' %}" 
-						alt="Computer screen displaying html, css, and js code"
-						width="640"
-						class="smooth-edge mt-5"
-						>
+							<img 
+							src="{% static 'img/default.jpg' %}" 
+							alt="Computer screen displaying html, css, and js code"
+							width="640"
+							class="smooth-edge mt-5"
+							>
 						{% else %}
-						<img 
-						src="{{ post.featured_image.url }}" 
-						alt="{{ post.title }}"
-						width="640"
-						class="smooth-edge mt-5"
-						>
+							<img 
+							src="{{ post.featured_image.url }}" 
+							alt="{{ post.title }}"
+							width="640"
+							class="smooth-edge mt-5"
+							>
 						{% endif %}
 					</div>
 				</div>
@@ -156,7 +151,7 @@
 										<span class="icon is-small">
 											<i aria-label="Update comment" 
 											class="fas fa-edit edit-button" 
-											comment_id="{{ comment.id }}"></i>
+											data-comment-id="{{ comment.id }}"></i>
 										</span>
 									</a>
 									<a class="level-item" >

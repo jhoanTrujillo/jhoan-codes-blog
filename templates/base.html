@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Jhoan Codes</title>
-
+        <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico'%}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
@@ -59,16 +59,12 @@
                     {% endif %}
                 </div>
 
+                <!-- displaying Django messages -->
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
                             {% if user.is_authenticated %}
-                                <div class="mr-5">
-                                    <a class="is-link has-text-dark" href="{% url 'users-profile' user.id %}">
-                                        <b>Hey, {{ user.username }}!</b>
-                                    </a>
-                                </div>
-                                <a href="{% url 'account_logout' %}" class="button is-light"> Log Out </a>
+                                <a href="{% url 'account_logout' %}" class="button is-danger is-left"> Log Out </a>
                             {% else %}
                                 <a href="{% url 'account_signup' %}" class="button is-primary">
                                     <strong>Sign up</strong>
@@ -81,6 +77,27 @@
                 </div>
             </div>
         </nav>
+
+        {% for message in messages %}
+        <div class="modal is-active">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="message">
+                    <div class="message-header">
+                        <h3>Hey!</h3>
+                        <button class="delete" data-close-modal aria-label="delete"></button>
+                    </div>
+                    <div class="message-body">
+                        <div class="content">
+                        {{ message | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+        
+        {% endfor %}
 
         <main>{% block content %} {% endblock content %}</main>
 

@@ -53,6 +53,10 @@ def post_view(request, slug):
             comment.author = request.user
             comment.post = post
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+            )
 
     comment_form = CommentForm()
 
@@ -149,7 +153,7 @@ def bio_edit(request, user_id, id):
 
     if request.method == "POST":
         bio_form = BioForm(data=request.POST, instance=profile)
-        if bio_form.is_valid():
+        if bio_form.is_valid() and profile.user == request.user:
             bio_form.save()
             messages.success(request, 'Bio Updated!')
             # Redirect to the profile page
