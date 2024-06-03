@@ -12,3 +12,6 @@ blog/fixtures/
 .env
 venv/
 env/
+
+.DS_Store
+db.sqlite3
