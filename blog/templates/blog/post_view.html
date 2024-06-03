@@ -115,7 +115,9 @@
 									{{ comment.created_on|date:"D d M Y" }}
 								</small>
 								<br>
-								{{ comment.body }}
+								<span id="">
+									{{ comment.body }}
+								</p>
 								</p>
 								<div class="has-text-danger has-background-light">
 									<p>
@@ -140,7 +142,9 @@
 											{{ comment.created_on|date:"D d M Y" }}
 										</small>
 										<br>
+										<span id="comment-{{ comment.id }}">
 										{{ comment.body }}
+										</span>
 									</p>
 								</div>
 							</div>
