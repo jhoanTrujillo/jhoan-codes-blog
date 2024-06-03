@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from cloudinary.forms import cl_init_js_callbacks   
 from .models import Post, Comment, Profile
-from .forms import CommentForm, BioForm
+from .forms import CommentForm, ProfileForm
 
 
 # Class based view
@@ -126,13 +126,12 @@ def profile(request, user_id):
 
     # Inherits value from comment_form in form.py
     if request.method == "POST":
-        profile_form = BioForm(data=request.POST)
+        profile_form = ProfileForm(request.POST, request.FILES)
         if profile_form.is_valid():
-            bio = profile_form.save(commit=False)
-            profile.bio = bio
+            bio = profile_form.save(commit=True)
             bio.save()
 
-    bio_form = BioForm()
+    profile_form = ProfileForm()
 
     # Renders page and pass profile data
     return render(
@@ -140,7 +139,7 @@ def profile(request, user_id):
             'blog/profile.html',
             {
                 "profile": profile,
-                "bio_form": bio_form,
+                "profile_form": profile_form,
             },
     )
 
@@ -153,16 +152,16 @@ def bio_edit(request, user_id, id):
     profile = get_object_or_404(Profile, user=request.user)
 
     if request.method == "POST":
-        bio_form = BioForm(data=request.POST, instance=profile)
-        if bio_form.is_valid() and profile.user == request.user:
-            bio_form.save()
+        profile_form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
+        if profile_form.is_valid() and profile.user == request.user:
+            profile_form.save()
             messages.success(request, 'Bio Updated!')
             # Redirect to the profile page
             return HttpResponseRedirect(reverse(
                 'users-profile', args=[request.user.id]
             ))
         else:
-            messages.error(request, 'Error updating bio!')
+            messages.error(request, 'Error updating profile!')
 
     return HttpResponseRedirect(reverse(
         'users-profile', args=[request.user.id]

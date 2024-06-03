@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Comment, Profile
+from cloudinary.forms import CloudinaryFileField
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -9,7 +10,10 @@ class CommentForm(forms.ModelForm):
 
 
 # This handles the change of the bio
-class BioForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('bio',)
+        image = CloudinaryFileField(
+            options={"folder": "profile/"}
+        )
+        fields = ('image', 'bio')
