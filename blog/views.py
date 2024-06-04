@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from cloudinary.forms import cl_init_js_callbacks   
+from cloudinary.forms import cl_init_js_callbacks
 from .models import Post, Comment, Profile
 from .forms import CommentForm, ProfileForm
 
@@ -91,6 +91,9 @@ def comment_edit(request, slug, comment_id):
             comment.approved = False
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+
+            return HttpResponseRedirect(reverse('post_view', args=[slug]))
+
         else:
             messages.add_message(
                 request, messages.ERROR, 'Error updating comment!'
@@ -152,7 +155,9 @@ def bio_edit(request, user_id, id):
     profile = get_object_or_404(Profile, user=request.user)
 
     if request.method == "POST":
-        profile_form = ProfileForm(data=request.POST, files=request.FILES, instance=profile)
+        profile_form = ProfileForm(
+            data=request.POST, files=request.FILES, instance=profile
+            )
         if profile_form.is_valid() and profile.user == request.user:
             profile_form.save()
             messages.success(request, 'Bio Updated!')
@@ -166,4 +171,3 @@ def bio_edit(request, user_id, id):
     return HttpResponseRedirect(reverse(
         'users-profile', args=[request.user.id]
     ))
-

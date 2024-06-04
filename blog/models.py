@@ -64,7 +64,7 @@ class Profile(models.Model):
     image = CloudinaryField('image', default='placeholder')
     bio = models.TextField(default="bio")
 
-    # Signals code coming from https://dev.to/earthcomfy/django-user-profile-3hik
+    # Signals code from https://dev.to/earthcomfy/django-user-profile-3hik
     # When user is created, then a profile is created as well.
     def __str__(self):
         return f'{self.user.username} Profile'

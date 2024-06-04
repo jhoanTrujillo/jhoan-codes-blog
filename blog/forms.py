@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from .models import Comment, Profile
 from cloudinary.forms import CloudinaryFileField
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
