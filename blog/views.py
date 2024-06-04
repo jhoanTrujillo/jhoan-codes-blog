@@ -13,13 +13,17 @@ from .forms import CommentForm, ProfileForm
 class IndexPage(generic.ListView):
     """
     Handles the index page data.
-    queryset: returns a list of published post
-    pagination: Total of 6, to keep the list small on index.
+    queryset: returns a list of published posts
     template_name: refers to the index template in blog templates
     """
-    queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = 'blog/index.html'
-    paginate_by = 6
+    paginate_by = 3
+
+    def get_queryset(self):
+        # Limit to three posts
+        queryset = Post.objects.filter(status=1).order_by("-created_on")[:3]
+        print("IndexPage Queryset:", queryset)  # Debugging statement
+        return queryset
 
 
 class PostList(generic.ListView):
@@ -27,7 +31,7 @@ class PostList(generic.ListView):
     # Filtering results by published post only
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = 'blog/post_list.html'
-    paginate_by = 9
+    paginate_by = 6
 
 
 def post_view(request, slug):
