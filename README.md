@@ -232,19 +232,59 @@ Buttons in the main menu, profile pages, blog post, and other elements that redi
 Testing: 
 [testing video](repo/media/manual_navigation.webm) | you might need to download and open the webm file separately.
 
+Result:
+Links behaved as intended. The navigation has a home and blog link, the links direct the the correct pages. The signup, signin buttons redirect to the correct form. When logged in the logout button redirects to the right page and the profile page redirects to the user profile. The feature is working as expected.
+
 ### Login, signup, logout
+Testing for the login, signup and logout account functionality in the store.
+
+Expected behaviour:
+For the signup process to allow for account creation, sign in and sign out and for the accounts to auto generate a profile that can be updated on creation. 
+
+How to test:
+**for account creation and profile update**
+Go to the signup button > add a username, email, and password > once that is done you will be login > there you can access the newly added profile link in the navigation menu and access your profile > Lastly, update bio or profile image. 
+
+That will update your information for the backend.
+
+**For logout**
+Once you have an account and if you are signed in you will see the logout button as a red button in the top right corner of the site. Clicking the button should redirect to the logout page and to logout by clicking the confirmation button.
+
+Current behaviour tested: 
+[Signup and profile page test video](repo/media/signup_profile.webm) & [logout manual testing](/repo/media/signin_signout.webm)| download and see video in browser.
+
+Result:
+The feature behaved normally and as expected. The account was created, the profile was created automatically, the profile was able to be updated and lastly the user could sign in and out of their account.
 
 ### Blog post comment
+In here we go over the manual testing for comment posting, update, and deletion.
 
-### Profile update
+**Expected behaviour & how to test**:
+When a user is logged in > the can go into a blog > and inside said blog scroll to the button of the page a leave a comment. They can also see their comments prending for approval and lastly, they can delete or update comments.
+
+Part of the process requires an account being a staff account, since only approved comments will be displayed.
+
+Testing: 
+[Manual testing - post comments](/repo/media/post_approval.webm) & [Manual testing - update & delete comments](/repo/media/post_CRUD.webm) | download and view video in browser.
+
+Result:
+The crud functionality was working as expected allowing for posting, update, and deletion of the comments in a page. Additionally, comments don't show to all users when waiting for approval. They only show up for the poster.
+
+**NOTE:**
+After posting if you try to refresh the page the form will submit a warning telling you the information would be re-posted if the page is refresh. If ignore and the page is refreshed then the form will post the same comment once more for approval. This is a bug.
+
+
 
 ### Bugs
 
 In my search there were a couple of bugs that were taken care of while working on the project itself but two of them are major and worth nothing here. 
 
-- BUG | Unable to leave blog post comments
+- Form
 
-- BUG | Profile images can't be updated
+- BUG (fixed) | Unable to leave blog post comments
+
+- BUG (fixed) | Profile images can't be updated
+Profile images couldn't be uploaded since cloudinary.config wasn't setup and there was some changes needed into the 
 
 
 [Back to top](#jhoan-codes---the-blog)
