@@ -158,9 +158,12 @@ Additionally, create a new file named env.py at the root-level directory. Includ
 ```python
 # Sample env.py file
 
-SECRET_KEY = 'your_secret_key'
-DEBUG = 'True'
-DATABASE_URL = 'your_database_url'
+SECRET_KEY='your_secret_key'
+DEBUG='True or False'
+DATABASE_URL='your_database_url'
+CLOUD_NAME='cloudinary cloud name'
+CLOUDINARY_API_KEY='cloudinary api key'
+CLOUDINARY_SECRET_KEY='Secret api key'
 ```
 
 ### ElephantSQL 
@@ -198,7 +201,6 @@ Using the [CI python linter](https://pep8ci.herokuapp.com/) I noticed the majori
 
 - ![](repo/media/Signals.py.png)
 
-This specific test provided little to no proble, or time consumption since the process is mostly handle by the linter, and the corrections are simple indentation/white space removal. At least in my case. 
 
 ### W3 HTML Validator test
 
@@ -211,17 +213,35 @@ On a side note, the signup page seems to be having some issues with [W3 HTML val
 - [Here is a PDF file holding the first test and the results](repo/media/indexHTMLcheckPrefix.pdf)
 - ![successful check](repo/media/tidy_index.png)
 
-### BUGS!!
+## Manual Testing
 
-For this project personal circumstances made it so I wasn't able to use all the time I had a hand, in fact, This project was built in four day! which is not the best timeframe to built a robust blogging solution with not much backend experience, as such, I decided to hunt for as many bugs as possible to work on the improvement of the platform in the long term. 
+### Navigation
+Navigation manual testing was done to ensure the links and buttons that move the user over pages are working as expected.
 
-Consider this version, a MVP, which sets out to do it's job. Provide a basic blogging experience with some extra community building features. 
+Expected behaviour:
+Buttons in the main menu, profile pages, blog post, and other elements that redirect the user should properly redirect without causing a 404 when travelling between pages in the store.
 
-- In my search, please if you find any bug in styling or any other matter, do contact me.
+Testing: 
+[testing video](repo/media/manual_navigation.webm) | you might need to download and open the webm file separately.
+
+### Login, signup, logout
+
+### Blog post comment
+
+### Profile update
+
+### Bugs
+
+In my search there were a couple of bugs that were taken care of while working on the project itself but two of them are major and worth nothing here. 
+
+- BUG | Unable to leave blog post comments
+
+- BUG | Profile images can't be updated
+
 
 [Back to top](#jhoan-codes---the-blog)
 ---
-### Acknowledgements
+### Acknowledgements
 
 This was a tough project and there is still so much more I would love to add on in the future. I couldn't have gotten so much done without the feedback and advice from mentors, colleagues and friends. I would like to thank the following people for their help and support:
 
