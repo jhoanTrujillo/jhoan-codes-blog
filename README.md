@@ -16,7 +16,11 @@ Deployed in **Heroku**: [Link to APP](https://jhoancodes-blog-974ca7dbd7b0.herok
 	- [Technologies Used](#technologies-used)
 	- [Deployment](#deployment)
 1. [Testing](#testing)
-1. [Resources](#resources--credits)
+	- [Color](#color)
+	- [Python CI Linter](#python-ci-linter)
+	- [W3 HTML Validator test](#w3-html-validator-test)
+	- [Manual testing](#manual-testing)
+1. [Acknowledgements](#acknowledgements)
 
 ## UX/UI Design
 In this section, we cover the initial project design ideas, the user experience/design, UI choices, wireframing, and the user stories.
@@ -194,13 +198,17 @@ The color palette was selected for it's simplicity, approachability, and ease of
 Using the [CI python linter](https://pep8ci.herokuapp.com/) I noticed the majority of .py files created had small indentation issues, so I was able to correct the issues. It wasn't too time consuming, since there wasn't any major error or syntactical problem. It was mostly a matter of indentation and spaces. Here are some test:
 
 **Models.py - test**
-
 - ![](repo/media/models.py.png)
 
 **Signals.py - test**
 
 - ![](repo/media/Signals.py.png)
 
+**Forms.py - test**
+- ![](repo/media/py_forms.png)
+
+**Views.py - test**
+- ![](repo/media/py_views.png)
 
 ### W3 HTML Validator test
 

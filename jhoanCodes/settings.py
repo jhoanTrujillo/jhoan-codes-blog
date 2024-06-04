@@ -105,16 +105,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -159,8 +163,10 @@ LOGOUT_REDIRECT_URL = '/'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bulma"
 CRISPY_TEMPLATE_PACK = "bulma"
 
-CLOUD_NAME=os.environ.get('CLOUD_NAME'),
-CLOUDINARY_API_KEY=os.environ.get('CLOUDINARY_API_KEY'),
-CLOUDINARY_SECRET_KEY=os.environ.get('CLOUDINARY_SECRET_KEY')
+CLOUD_NAME = os.environ.get('CLOUD_NAME'),
+CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY'),
+CLOUDINARY_SECRET_KEY = os.environ.get('CLOUDINARY_SECRET_KEY')
 
-CLOUDINARY_URL=f"cloudinary://{CLOUDINARY_API_KEY}:{CLOUDINARY_SECRET_KEY}@{CLOUD_NAME}"
+CLOUDINARY_URL = (
+    f"cloudinary://{CLOUDINARY_API_KEY}:{CLOUDINARY_SECRET_KEY}@{CLOUD_NAME}"
+    )
