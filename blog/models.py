@@ -34,7 +34,7 @@ class Post(models.Model):
         return f"{self.title} | Author: {self.author}"
 
     # Orders the post by date of creation
-    class meta:
+    class Meta:
         ordering = ["-created_on"]
 
 
@@ -53,7 +53,7 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.body}"
 
-    class meta:
+    class Meta:
         ordering = ["created_on"]
 
 

@@ -52,7 +52,7 @@
 		<!-- Pagination -->
 		{% if is_paginated %}
 			<div class="section">
-				<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+				<div class="pagination is-centered" role="navigation" aria-label="pagination">
 					{% if page_obj.has_previous %}
 						<a class="pagination-previous" aria-label="Go to previous page" href="?page={{ page_obj.previous_page_number }}">
 							Previous
@@ -63,7 +63,7 @@
 							Next page
 						</a>
 					{% endif %}
-				</nav>
+					</div>
 			</div>
 		{% endif %}
 	</section>
