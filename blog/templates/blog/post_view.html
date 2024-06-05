@@ -108,16 +108,16 @@
 						<div class="media-content">
 							<div class="content">
 								<p class="has-text-grey-lighter">
-								<strong class="has-text-grey-lighter">
-									<a href="{% url 'users-profile' comment.author.id %}">@{{ comment.author }}</a>
-								</strong> 
-								<small>
-									{{ comment.created_on|date:"D d M Y" }}
-								</small>
-								<br>
-								<span id="">
-									{{ comment.body }}
-								</p>
+									<strong class="has-text-grey-lighter">
+										<a href="{% url 'users-profile' comment.author.id %}">@{{ comment.author }}</a>
+									</strong> 
+									<small>
+										{{ comment.created_on|date:"D d M Y" }}
+									</small>
+									<br>
+									<span id="">
+										{{ comment.body }}
+									</span>
 								</p>
 								<div class="has-text-danger has-background-light">
 									<p>
